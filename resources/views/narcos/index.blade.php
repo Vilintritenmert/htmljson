@@ -12,23 +12,30 @@
                     <tbody>
                     <tr>
                         <th style="width: 10px">#</th>
-                        <th>Task</th>
-                        <th>Progress</th>
-                        <th style="width: 40px">Label</th>
-                        <th style="width: 40px">Action</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th style="width: 40px">Recipe</th>
+                        <th style="width: 80px">Action</th>
                     </tr>
                     @foreach($tablets as $tablete)
                         <tr>
                             <td>{{$tablete->id}}</td>
                             <td>{{$tablete->title}}</td>
+                            <td>{{Illuminate\Support\Str::limit($tablete->description,70)}}</td>
+                            <td>{{$tablete->recipe}}</td>
                             <td>
-                                {{Illuminate\Support\Str::limit($tablete->description,70)}}
-                            </td>
-                            <td><span class="badge @if($tablete->recipe) bg-red @else bg-green @endif ">Recipe</span></td>
-                            <td>
-                                {!! Form::open(['route' => ['narcos.destroy', $tablete->id], 'method' => 'delete']) !!}
-                                {!!  Form::submit('Delete')  !!}
-                                {!!  Form::close() !!}
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default dropdown-toggle"
+                                            data-toggle="dropdown">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="{{route('narcos.edit',['id'=>$tablete->id])}}"><i
+                                                        class="fa fa-pencil"></i>Edit</a></li>
+                                        <li><a href="#"><i class="fa fa-trash"></i>Delete</a></li>
+                                    </ul>
+                                </div>
                             </td>
                         </tr>
                     @endforeach

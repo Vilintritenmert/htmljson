@@ -58,12 +58,16 @@ class NarcoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Tablet  $tablet
+     * @param $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tablet $tablet)
+    public function edit($id)
     {
-        //
+        $tablet = Tablet::findOrFail($id);
+
+        return View('narcos.edit', array(
+            'tablet' => $tablet)
+        );
     }
 
     /**
