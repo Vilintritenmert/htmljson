@@ -15,4 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('dashboard', 'DashboardController@index')->name('dashboard.index');
+Route::resource('narcos', 'NarcoController', [
+    'names' => [
+        'delete' => 'narcos.delete'
+    ]]);
+

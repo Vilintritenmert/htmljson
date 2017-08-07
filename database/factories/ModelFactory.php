@@ -22,3 +22,14 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(App\Tablet::class, function (Faker\Generator $faker) {
+    return array(
+        'title' => $faker->company,
+        'description' => $faker->sentence($nbWords = 10, $variableNbWords = true),
+        'recipe' => rand(0,1),
+        'count' => rand(1,10) * 10,
+        'in_stock' => rand(1,1000)
+    );
+});
