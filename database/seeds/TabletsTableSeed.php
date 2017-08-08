@@ -14,7 +14,7 @@ class TabletsTableSeed extends Seeder
     {
         Tablet::truncate();
 
-        $tablets = factory(Tablet::class, 1000)->make();
+        $tablets = factory(Tablet::class, 100)->make();
 
         Tablet::insert($tablets->toArray());
     }

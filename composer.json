@@ -11,7 +11,9 @@
         "laravelcollective/html": "^5.4.0"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.4",
         "fzaninotto/faker": "~1.4",
+        "laravel/dusk": "^1.1",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~5.7"
     },
@@ -41,7 +43,14 @@
         ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
-            "php artisan optimize"
+            "php artisan ide-helper:generate",
+            "php artisan ide-helper:meta",
+            "php artisan optimize",
+            "php artisan dusk:install"
+        ],
+        "tests": [
+            "./vendor/bin/phpunit",
+            "php artisan dusk"
         ]
     },
     "config": {

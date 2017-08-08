@@ -12,11 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('narcos.index');
 });
 
-Route::resource('narcos', 'NarcoController', [
-    'names' => [
-        'delete' => 'narcos.delete'
-    ]]);
+Route::resource('narcos', 'NarcoController');
 
